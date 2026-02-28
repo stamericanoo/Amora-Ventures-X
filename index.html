@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amora Ventures - Sulfuric Acid Plant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --navy-dark: #0a192f;
+            --navy-light: #112240;
+            --maroon: #800000;
+            --maroon-bright: #a52a2a;
+            --white: #ffffff;
+            --off-white: #f8f9fa;
+            --gray: #ccd6f6;
+        }
+
+        body { 
+            margin: 0; 
+            font-family: 'Inter', sans-serif; 
+            background: var(--navy-dark); 
+            color: var(--white); 
+            line-height: 1.6;
+            padding-bottom: 100px;
+        }
+        
+        /* Header dengan Gradasi Navy ke Maroon */
+        header { 
+            text-align: center; 
+            padding: 60px 20px; 
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--maroon) 100%);
+            border-bottom: 4px solid var(--white);
+        }
+        header h1 { font-size: 3rem; margin: 0; letter-spacing: 4px; color: var(--white); text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        header p { color: var(--gray); font-weight: 400; margin-top: 10px; font-size: 1.2rem; }
+
+        /* Stats Grid - Kartu Putih Teks Navy */
+        .stats-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 25px; 
+            padding: 0 40px; 
+            margin-top: -40px; 
+        }
+        .stat-card { 
+            background: var(--white); 
+            padding: 30px; 
+            border-radius: 12px; 
+            text-align: center; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: 0.3s;
+        }
+        .stat-card:hover { transform: translateY(-10px); border: 2px solid var(--maroon); }
+        .stat-card h3 { font-size: 0.8rem; color: var(--maroon); text-transform: uppercase; margin: 0; font-weight: 700; }
+        .stat-card .value { font-size: 2.2rem; font-weight: 800; color: var(--navy-dark); margin: 10px 0; }
+
+        /* Content Area */
+        .main-content { max-width: 1100px; margin: 50px auto; padding: 0 20px; }
+        .display-box { 
+            background: var(--navy-light); 
+            border-radius: 15px; 
+            padding: 40px; 
+            border: 1px solid var(--maroon); 
+            min-height: 400px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
+        }
+
+        /* Navigasi Dock Maroon & Putih */
+        .nav-dock { 
+            position: fixed; 
+            bottom: 30px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            background: var(--white); 
+            padding: 10px 25px; 
+            border-radius: 50px; 
+            display: flex; 
+            gap: 15px; 
+            z-index: 1000;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+        .nav-btn { 
+            background: transparent; 
+            border: none; 
+            color: var(--navy-dark); 
+            padding: 10px 18px; 
+            border-radius: 25px; 
+            cursor: pointer; 
+            font-weight: 700; 
+            transition: 0.3s;
+        }
+        .nav-btn:hover { background: var(--maroon); color: var(--white); }
+        .nav-btn.active { background: var(--maroon); color: var(--white); }
+
+        /* Tables */
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: rgba(255,255,255,0.05); }
+        th { background: var(--maroon); color: var(--white); padding: 15px; text-align: left; }
+        td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+        .highlight-box { 
+            background: var(--maroon); 
+            color: var(--white);
+            padding: 20px; 
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .footer { 
+            background: #050c18; 
+            padding: 15px; 
+            text-align: center; 
+            font-size: 0.85rem; 
+            color: var(--gray);
+            border-top: 2px solid var(--maroon);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>AMORA VENTURES</h1>
+    <p>Sulfuric Acid Plant Design - Capacity 1000 MTPD</p>
+</header>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <h3>Produksi H₂SO₄</h3>
+        <div class="value">1.000 <span style="font-size:1rem;">ton/hari</span></div>
+    </div>
+    <div class="stat-card">
+        <h3>Laba Bersih</h3>
+        <div class="value">94,5 <span style="font-size:1rem;">Miliar</span></div>
+    </div>
+    <div class="stat-card">
+        <h3>Payback Period</h3>
+        <div class="value">10,3 <span style="font-size:1rem;">Tahun</span></div>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="display-box" id="content-display">
+        <h2 style="color: var(--white); border-bottom: 2px solid var(--maroon); display: inline-block;">Dashboard Amora Ventures</h2>
+        <p style="margin-top: 20px;">Selamat datang. Dashboard ini menyajikan visualisasi data teknis dan analisis ekonomi untuk rancangan pabrik asam sulfat.</p>
+        <div class="highlight-box">
+            <strong>Tim Proyek:</strong> Aisha, Keysha, Jovita
+        </div>
+        
+    </div>
+</div>
+
+<nav class="nav-dock">
+    <button class="nav-btn active" onclick="render('home', this)">Home</button>
+    <button class="nav-btn" onclick="render('process', this)">Proses</button>
+    <button class="nav-btn" onclick="render('equipment', this)">Biaya Alat</button>
+    <button class="nav-btn" onclick="render('economics', this)">Ekonomi</button>
+</nav>
+
+<footer class="footer">
+    Group Members: <b>Aisha, Keysha, Jovita</b> | Amora Ventures &copy; 2026
+</footer>
+
+<script>
+const contentData = {
+    home: `
+        <h2>Informasi Umum</h2>
+        <table>
+            <tr><td>Nama Perusahaan</td><td>Amora Ventures</td></tr>
+            <tr><td>Produk</td><td>Asam Sulfat (H₂SO₄ 98%)</td></tr>
+            <tr><td>Kapasitas Tahunan</td><td>330.000 Ton/Tahun</td></tr>
+            <tr><td>Bahan Baku</td><td>Sulfur (181 ton/hari)</td></tr>
+        </table>
+    `,
+    process: `
+        <h2>Detail Unit Operasi</h2>
+        <p>Proses menggunakan metode oksidasi katalitik (Contact Process).</p>
+        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px;">
+            <p><b>1. Sulfur Burning:</b> S + O₂ → SO₂ (900-1100°C)</p>
+            <p><b>2. Catalytic Converter:</b> 2SO₂ + O₂ ⇌ 2SO₃ (V₂O₅ Catalyst)</p>
+            <p><b>3. Absorption:</b> SO₃ + H₂SO₄ → H₂S₂O₇ (Oleum)</p>
+            <p><b>4. Hydration:</b> H₂S₂O₇ + H₂O → 2H₂SO₄</p>
+        </div>
+    `,
+    equipment: `
+        <h2>Daftar Harga Alat Utama (E)</h2>
+        <canvas id="chartAlat" style="max-height: 250px; margin-bottom: 20px;"></canvas>
+        <table>
+            <tr><th>Kode</th><th>Nama Alat</th><th>Harga (IDR)</th></tr>
+            <tr><td>F-101</td><td>Sulfur Burner</td><td>26.000.000.000</td></tr>
+            <tr><td>R-201</td><td>Catalytic Converter</td><td>48.000.000.000</td></tr>
+            <tr><td>GC-101</td><td>Gas Cleaning System</td><td>36.000.000.000</td></tr>
+        </table>
+    `,
+    economics: `
+        <h2>Analisis Kelayakan</h2>
+        <canvas id="chartEkonomi" style="max-height: 250px; margin-bottom: 20px;"></canvas>
+        <table>
+            <tr><td>Total Capital Investment (TCI)</td><td>Rp 1.127.141.720.250</td></tr>
+            <tr><td>Net Profit (After Tax)</td><td>Rp 94.536.000.000</td></tr>
+            <tr><td>Break Even Point (BEP)</td><td>56%</td></tr>
+        </table>
+    `
+};
+
+function render(key, btn) {
+    const display = document.getElementById('content-display');
+    display.innerHTML = contentData[key];
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    if (key === 'equipment') {
+        new Chart(document.getElementById('chartAlat'), {
+            type: 'bar',
+            data: {
+                labels: ['F-101', 'R-201', 'GC-101'],
+                datasets: [{ label: 'Miliar IDR', data: [26, 48, 36], backgroundColor: '#800000' }]
+            },
+            options: { plugins: { legend: { labels: { color: 'white' } } } }
+        });
+    }
+    if (key === 'economics') {
+        new Chart(document.getElementById('chartEkonomi'), {
+            type: 'pie',
+            data: {
+                labels: ['TPC (Biaya)', 'Net Profit (Laba)'],
+                datasets: [{ data: [538.8, 94.5], backgroundColor: ['#112240', '#800000'] }]
+            },
+            options: { plugins: { legend: { labels: { color: 'white' } } } }
+        });
+    }
+}
+</script>
+</body>
+</html>
